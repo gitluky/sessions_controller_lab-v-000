@@ -15,8 +15,9 @@ RSpec.describe "login", :type => :view do
   end
 
   it "redirects user to login when user enters a blank name" do
-    visit '/'
     visit '/sessions/new'
+    fill_in 'name', with: 'a session has no name'
+    click_button 'login'
     click_button 'logout'
     fill_in 'name', with: ''
     click_button 'login'
