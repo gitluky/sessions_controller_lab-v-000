@@ -18,7 +18,7 @@ RSpec.describe "login", :type => :view do
     visit '/sessions/new'
     fill_in 'name', with: ''
     click_button 'login'
-    expect(response).to redirect_to sessions_new_path
+    expect(current_path).to eq(sessions_new_path)
   end
 
 end
