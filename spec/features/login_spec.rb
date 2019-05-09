@@ -14,4 +14,12 @@ RSpec.describe "login", :type => :view do
     expect(page.body).to have_content('Hi, a session has no name')
   end
 
+  it "redirects user to login when user enters a blank name" do
+    visit '/logout'
+    visit '/sessions/new'
+    fill_in 'name', with: ''
+    click_button 'login'
+    expect(response).to redirect_to sessions_new_path
+  end
+
 end
