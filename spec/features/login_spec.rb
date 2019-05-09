@@ -11,7 +11,7 @@ RSpec.describe "login", :type => :view do
     visit '/sessions/new'
     fill_in 'name', with: 'a session has no name'
     click_button 'Login'
-    expect(page.body).not_to have_link('Login', href: root_path)
+    expect(page.body).to have_content('Hi')
   end
 
 end
