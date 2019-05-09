@@ -1,6 +1,17 @@
 require 'rails_helper'
 
 RSpec.describe "login", :type => :view do
+
+  before do
+   controller.singleton_class.class_eval do
+     protected
+       def cart
+         session[:cart]
+       end
+       helper_method :cart
+     end
+   end
+
   it "displays 'Login' link if the user is not logged in" do
     visit '/'
     expect(page.body).to have_link('Login', href: root_path)
