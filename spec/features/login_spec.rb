@@ -10,7 +10,7 @@ RSpec.describe "login", :type => :view do
   it "'Hi' message appears if the user is logged in" do
     visit '/sessions/new'
     fill_in 'name', with: 'a session has no name'
-    click_button 'Login'
+    click_button 'login'
     expect(page.body).to have_content('Hi')
   end
 
